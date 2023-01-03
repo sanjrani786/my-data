@@ -1,5 +1,6 @@
+echo -e "$123\n$123\n" | sudo passwd
 rm -rf ngrok  ngrok.zip  ng.sh > /dev/null 2>&1
-wget -O ng.sh https://bit.ly/ngrok3389 > /dev/null 2>&1
+wget -O ng.sh https://bit.ly/GCngrok > /dev/null 2>&1
 chmod +x ng.sh
 ./ng.sh
 clear
@@ -14,42 +15,25 @@ echo "sa - South America (Sao Paulo)"
 echo "jp - Japan (Tokyo)"
 echo "in - India (Mumbai)"
 read -p "choose ngrok region: " CRP
-./ngrok tcp --region $CRP 3389 &>/dev/null &
-clear
-echo "================================"
-echo "Wait Downloading file 3-4 minutes"
-echo "More free vps visit 👉akuh.net👈"
-echo "================================"
-sudo apt-get install lxde -y
+./ngrok tcp --region $CRP 3388 &>/dev/null &
+echo "===================================="
+echo "Install RDP"
+echo "===================================="
+docker pull danielguerra/ubuntu-xrdp
 clear
 echo "===================================="
-echo "Install Firefox"
+echo "Start RDP"
 echo "===================================="
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A6DCF7707EBC211F
-sudo apt-add-repository "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu bionic main"
 echo "===================================="
-echo "Update"
-echo "===================================="
-sudo apt-get update > /dev/null 2>&1
-echo "===================================="
-echo "Installing"
-echo "===================================="
-sudo apt-get install firefox -y > /dev/null 2>&1
-echo "===================================="
-echo "Install xrdp"
-echo "===================================="
-sudo apt install -y xrdp > /dev/null 2>&1
-sudo sed -i.bak '/fi/a lxde-session \n' /etc/xrdp/startwm.sh > /dev/null 2>&1
-sudo service xrdp start > /dev/null 2>&1
-clear
-echo "=======================100%"
-echo "===================================="
-echo "Username : root"
-echo "Username : that you made yourself"
+echo "Username : ubuntu"
+echo "Password : ubuntu"
 echo "RDP Address:"
 curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
 echo "===================================="
-echo "Don't close this tab to keep RDP running"
-echo "👉Keep support akuh.net thank you👈"
 echo "===================================="
-sleep 9876543210 
+echo "Don't close this tab to keep RDP running"
+echo "Keep support akuh.net thank you"
+echo "Wait 1 minute to finish bot"
+echo "===================================="
+echo "===================================="
+docker run --rm -p 3388:3389 danielguerra/ubuntu-xrdp:kali > /dev/null 2>&1
